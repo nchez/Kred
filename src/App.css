@@ -18,26 +18,56 @@ h1 {
   text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.dropdown-div {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  width: fit-content;
+  border: 3px solid black;
 }
 
-.App-link {
-  color: #61dafb;
+.dropdown-label {
+  display: flex;
+  margin-bottom: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dropdown-select {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.filters-div {
+  display: flex;
+  border: 3px solid green;
+  height: 7vh;
+}
+
+.nft-display-div {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 10px;
+  height: 100vh;
+  width: 90vw;
+  border: 3px solid red;
+}
+
+.forsale-toggle {
+  display: flex;
+  flex-direction: row;
+}
+
+.toggle-value {
+  display: flex;
+  border-radius: 25px;
+  width: 4rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(137, 220, 220);
+}
+
+.toggle-selected {
+  border: 5px solid black;
+  background-color: rgb(104, 172, 172);
 }
