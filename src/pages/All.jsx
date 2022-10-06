@@ -5,6 +5,9 @@ const axios = require('axios').default
 
 export default function All() {
   const [forSale, setForSale] = useState(false)
+  const [letterFilterToggle, setLetterFilterToggle] = useState(false)
+  const [nftCount, setNftCount] = useState(0)
+  const [firstLetterFilter, setFirstLetterFilter] = useState('')
   const [count, setCount] = useState(20)
   const [page, setPage] = useState(1)
   const [nftArr, setNftArr] = useState([])
@@ -20,6 +23,7 @@ export default function All() {
       .then(function (response) {
         console.log('nft call made')
         setNftArr(response.data.nfts)
+        setTimeout(setNftCount(nftArr.length), 4000)
       })
       .catch(function (error) {
         console.error(error)
@@ -36,6 +40,10 @@ export default function All() {
     setForSale((state) => !state)
   }
 
+  const handleLetterFilter = (e) => {
+    setFirstLetterFilter(e.target.value)
+  }
+
   // make initial api call with default count and page on component mount
   useEffect(() => {
     fetchNfts(count, page)
@@ -43,8 +51,23 @@ export default function All() {
 
   // trigger api calls when count and/or page changes
   useEffect(() => {
-    fetchNfts(count, page)
-  }, [count, page, forSale])
+    if (!letterFilterToggle) {
+      fetchNfts(count, page)
+    }
+  }, [count, page, forSale, letterFilterToggle])
+
+  // trigger filter when input is not null ('')
+  useEffect(() => {
+    if (letterFilterToggle && firstLetterFilter !== '') {
+      const tempArr = nftArr.slice()
+      setNftArr(
+        tempArr.filter(
+          (element) => element.name.charAt(0) === firstLetterFilter
+        )
+      )
+      setTimeout(setCount(nftArr.length), 4000)
+    }
+  }, [firstLetterFilter, letterFilterToggle])
 
   const dropdown = (
     <div className="dropdown-div">
@@ -67,7 +90,11 @@ export default function All() {
       <div className="filters-div">
         {dropdown}
         <ForSaleToggle handleForSale={handleForSale} forSale={forSale} />
-        <NameFilter />
+        <NameFilter
+          handleLetterFilter={handleLetterFilter}
+          setLetterFilterToggle={setLetterFilterToggle}
+          letterFilterToggle={letterFilterToggle}
+        />
       </div>
       <div className="nft-display-div"></div>
     </>
