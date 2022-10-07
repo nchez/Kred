@@ -41,15 +41,45 @@ h1 {
   display: flex;
   border: 3px solid green;
   height: 7vh;
+  align-items: center;
+  justify-content: center;
 }
 
 .nft-display-div {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
   margin-top: 10px;
-  height: 100vh;
+  height: fit-content;
   width: 90vw;
   border: 3px solid red;
+}
+
+.nft-card-div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 3px solid green;
+  flex-direction: column;
+  margin: 5px;
+  width: 20vw;
+  height: 30vh;
+}
+
+.img-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20vw;
+  height: 20vh;
+}
+
+img {
+  width: 19vw;
+  height: 19vh;
+  object-fit: contain;
 }
 
 .forsale-toggle {
@@ -75,12 +105,13 @@ h1 {
 .letter-input-div {
   display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .letter-filter-div {
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 .letter-toggle {

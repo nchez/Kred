@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import ForSaleToggle from '../components/ForSaleToggle'
 import NameFilter from '../components/NameFilter'
+import NftCard from '../components/NftCard'
 const axios = require('axios').default
 
 export default function All() {
   const [forSale, setForSale] = useState(false)
   const [letterFilterToggle, setLetterFilterToggle] = useState(false)
-  const [nftCount, setNftCount] = useState(0)
   const [firstLetterFilter, setFirstLetterFilter] = useState('')
   const [count, setCount] = useState(20)
   const [page, setPage] = useState(1)
@@ -23,7 +23,6 @@ export default function All() {
       .then(function (response) {
         console.log('nft call made')
         setNftArr(response.data.nfts)
-        setTimeout(setNftCount(nftArr.length), 4000)
       })
       .catch(function (error) {
         console.error(error)
@@ -83,6 +82,15 @@ export default function All() {
       </div>
     </div>
   )
+  const nftCards = nftArr.map((element) => {
+    return (
+      <NftCard
+        image={element.face}
+        name={element.name}
+        key={`${element.uuid}`}
+      />
+    )
+  })
 
   return (
     <>
@@ -96,7 +104,7 @@ export default function All() {
           letterFilterToggle={letterFilterToggle}
         />
       </div>
-      <div className="nft-display-div"></div>
+      <div className="nft-display-div">{nftCards}</div>
     </>
   )
 }

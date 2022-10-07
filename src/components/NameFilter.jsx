@@ -5,8 +5,8 @@ export default function NameFilter({
 }) {
   return (
     <div className="letter-filter-div">
+      First Letter Filter
       <div className="letter-input-div">
-        <label for="firstLetter">First Letter Filter</label>
         <input
           type="text"
           id="firstLetter"
@@ -14,13 +14,13 @@ export default function NameFilter({
           placeholder="letter to filter"
           onChange={(e) => handleLetterFilter(e)}
         />
+        <button
+          className="letter-toggle"
+          onClick={() => setLetterFilterToggle((state) => !state)}
+        >
+          {letterFilterToggle ? 'ON' : 'OFF'}
+        </button>
       </div>
-      <button
-        className="letter-toggle"
-        onClick={() => setLetterFilterToggle((state) => !state)}
-      >
-        {letterFilterToggle ? 'ON' : 'OFF'}
-      </button>
     </div>
   )
 }
