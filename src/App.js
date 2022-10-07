@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Navbar setPage={setPage} />
-      {page === 'all' ? <All /> : <Hidden />}
+      <div className="main-div">{page === 'all' ? <All /> : <Hidden />}</div>
     </>
   )
 }

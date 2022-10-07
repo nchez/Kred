@@ -12,23 +12,6 @@ export default function All() {
   const [page, setPage] = useState(1)
   const [nftArr, setNftArr] = useState([])
 
-  const fetchNfts = (count, page) => {
-    const options = {
-      method: 'GET',
-      url: `https://api.nft.kred/nft/nfts?token=${process.env.REACT_APP_API_KEY}&onsale=${forSale}&batched=true&count=${count}&page=${page}`,
-      headers: { accept: 'application/json' },
-    }
-    const response = axios
-      .request(options)
-      .then(function (response) {
-        console.log('nft call made')
-        setNftArr(response.data.nfts)
-      })
-      .catch(function (error) {
-        console.error(error)
-      })
-  }
-
   // handler function for updating nfts per page from dropdown
   const handleCountChange = (e) => {
     setCount(e.target.value)
@@ -42,31 +25,38 @@ export default function All() {
   const handleLetterFilter = (e) => {
     setFirstLetterFilter(e.target.value)
   }
-
-  // make initial api call with default count and page on component mount
-  useEffect(() => {
-    fetchNfts(count, page)
-  }, [])
+  //   const handleLetterFilterToggle = () => {
+  //     console.log('handleletterfilter toggle hit')
+  //     if (firstLetterFilter !== '') {
+  //       console.log('filter hit')
+  //       const tempArr = nftArr.slice()
+  //       setNftArr(
+  //         tempArr.filter(
+  //           (element) => element.name.charAt(0) === firstLetterFilter
+  //         )
+  //       )
+  //     }
+  //   }
 
   // trigger api calls when count and/or page changes
   useEffect(() => {
     if (!letterFilterToggle) {
-      fetchNfts(count, page)
+      const options = {
+        method: 'GET',
+        url: `https://api.nft.kred/nft/nfts?token=${process.env.REACT_APP_API_KEY}&onsale=${forSale}&batched=true&count=${count}&page=${page}`,
+        headers: { accept: 'application/json' },
+      }
+      axios
+        .request(options)
+        .then(function (response) {
+          console.log('nft call made')
+          setNftArr(response.data.nfts)
+        })
+        .catch(function (error) {
+          console.error(error)
+        })
     }
   }, [count, page, forSale, letterFilterToggle])
-
-  // trigger filter when input is not null ('')
-  useEffect(() => {
-    if (letterFilterToggle && firstLetterFilter !== '') {
-      const tempArr = nftArr.slice()
-      setNftArr(
-        tempArr.filter(
-          (element) => element.name.charAt(0) === firstLetterFilter
-        )
-      )
-      setTimeout(setCount(nftArr.length), 4000)
-    }
-  }, [firstLetterFilter, letterFilterToggle])
 
   const dropdown = (
     <div className="dropdown-div">
@@ -100,8 +90,11 @@ export default function All() {
         <ForSaleToggle handleForSale={handleForSale} forSale={forSale} />
         <NameFilter
           handleLetterFilter={handleLetterFilter}
+          firstLetterFilter={firstLetterFilter}
           setLetterFilterToggle={setLetterFilterToggle}
           letterFilterToggle={letterFilterToggle}
+          setNftArr={setNftArr}
+          nftArr={nftArr}
         />
       </div>
       <div className="nft-display-div">{nftCards}</div>
