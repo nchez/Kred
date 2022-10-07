@@ -1,9 +1,16 @@
-export default function Navbar({ setPage }) {
-  const handleNavClick = (page) => {
-    setPage(page)
-  }
+import { useCallback } from 'react'
+
+export default function Navbar({ setPage, setSortToggle }) {
+  // handler for navbar clicks -- change page to selected tab and reset sort to default (ascending)
+  const handleNavClick = useCallback(
+    (page) => {
+      setPage(page)
+      setSortToggle('Ascending')
+    },
+    [setPage, setSortToggle]
+  )
   return (
-    <nav>
+    <nav className="nav-bar">
       <ul
         className="nav nav-tabs justify-content-center"
         id="myTab"

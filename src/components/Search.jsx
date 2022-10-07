@@ -1,13 +1,20 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 const axios = require('axios').default
 
 export default function Search({ hidden, setNftArr, forSale, count, pageNum }) {
+  // state for search input box
   const [search, setSearch] = useState('')
 
-  const handleChange = (e) => {
-    setSearch(e.target.value)
-  }
-  const handleSearch = () => {
+  // handler for search input
+  const handleChange = useCallback(
+    (e) => {
+      setSearch(e.target.value)
+    },
+    [setSearch]
+  )
+
+  // handler for search submit -- cannot get working with API
+  const handleSearch = useCallback(() => {
     if (!hidden) {
       const options = {
         method: 'GET',
@@ -44,14 +51,15 @@ export default function Search({ hidden, setNftArr, forSale, count, pageNum }) {
           console.error(error)
         })
     }
-  }
+  }, [hidden, setNftArr, count, forSale, pageNum, search])
+
   return (
     <div className="search-div">
       <input
         type="text"
         placeholder="enter search terms.."
         name="search"
-        onChange={(e) => handleChange(e)}
+        onChange={handleChange}
       />
       <button type="submit" onClick={handleSearch}>
         Search

@@ -1,4 +1,12 @@
-export default function ForSaleToggle({ handleForSale, forSale }) {
+import { useCallback } from 'react'
+
+export default function ForSaleToggle({ forSale, setForSale, setSortToggle }) {
+  // handler for toggling for sale
+  const handleForSale = useCallback(() => {
+    setSortToggle('Ascending')
+    setForSale((state) => !state)
+  }, [setSortToggle, setForSale])
+
   return (
     <div className="forsale-toggle">
       <div className="btn-group btn-group-toggle" data-toggle="buttons">

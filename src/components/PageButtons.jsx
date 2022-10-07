@@ -1,8 +1,14 @@
-export default function PageButtons({
-  pageNum,
-  handlePrevPage,
-  handleNextPage,
-}) {
+import { useCallback } from 'react'
+
+export default function PageButtons({ pageNum, setPageNum }) {
+  // handlers for page button clicks
+  const handlePrevPage = useCallback(() => {
+    setPageNum((page) => page - 1)
+  }, [setPageNum])
+  const handleNextPage = useCallback(() => {
+    setPageNum((page) => page + 1)
+  }, [setPageNum])
+
   return (
     <>
       <h5>{pageNum}</h5>
