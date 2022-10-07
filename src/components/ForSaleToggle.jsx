@@ -7,7 +7,7 @@ export default function ForSaleToggle({ handleForSale, forSale }) {
             type="radio"
             name="options"
             id="option1"
-            autocomplete="off"
+            autoComplete="off"
             value={false}
             checked={!forSale}
             onChange={handleForSale}
@@ -19,7 +19,7 @@ export default function ForSaleToggle({ handleForSale, forSale }) {
             type="radio"
             name="options"
             id="option2"
-            autocomplete="off"
+            autoComplete="off"
             value={true}
             onChange={handleForSale}
             checked={forSale}

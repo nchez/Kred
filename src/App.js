@@ -1,7 +1,6 @@
 import './App.css'
 import Navbar from './components/Navbar'
-import All from './pages/All'
-import Hidden from './pages/Hidden'
+import Main from './pages/Main'
 import { useState } from 'react'
 
 function App() {
@@ -9,7 +8,9 @@ function App() {
   return (
     <>
       <Navbar setPage={setPage} />
-      <div className="main-div">{page === 'all' ? <All /> : <Hidden />}</div>
+      <div className="main-div">
+        <Main page={page} />
+      </div>
     </>
   )
 }

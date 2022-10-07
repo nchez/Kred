@@ -7,6 +7,10 @@ h1 {
   text-align: center;
 }
 
+h5 {
+  padding-top: 5px;
+}
+
 .dropdown-div {
   display: flex;
   flex-direction: column;
@@ -60,13 +64,20 @@ h1 {
 
 .nft-card-div {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  border: 3px solid green;
-  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
   margin: 5px;
   width: 20vw;
-  height: 30vh;
+  height: 16vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.nft-card-div:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .img-div {
@@ -74,13 +85,37 @@ h1 {
   align-items: center;
   justify-content: center;
   width: 20vw;
-  height: 20vh;
 }
 
-img {
-  width: 19vw;
-  height: 19vh;
+.nft-img {
+  width: 15rem;
+  height: 9rem;
   object-fit: contain;
+}
+
+.avatar-img {
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.avatar-div {
+  margin-top: -5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18vw;
+  height: 5vh;
+}
+
+.creator-div {
+  margin-top: 5px;
+  height: 5vh;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .toggle-value {
@@ -116,4 +151,9 @@ img {
   justify-content: center;
   border-radius: 10px;
   height: 25px;
+}
+
+.search-div {
+  display: flex;
+  margin-bottom: 10px;
 }
