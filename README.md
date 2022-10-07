@@ -5,4 +5,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Run React App
 
 To run the react app, fork the repo, make local copy, then 'cd' into the local directory.
-Once in the local directory, 'npm i' in command line. Then run 'npm start'.
+Once in the local directory, 'npm i' in command line. Then run using 'npm start'.
