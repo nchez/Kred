@@ -134,7 +134,7 @@ export default function All({ page }) {
 
   const allNfts = (
     <>
-      <h1>All NFTs</h1>
+      <h1 className="title">All NFTs</h1>
       <Search
         forSale={forSale}
         setNftArr={setNftArr}
@@ -176,7 +176,7 @@ export default function All({ page }) {
 
   const hiddenNfts = (
     <>
-      <h1>Hidden NFTs</h1>
+      <h1 className="title">Hidden NFTs</h1>
       <Search
         forSale={forSale}
         setNftArr={setNftArr}
