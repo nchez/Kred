@@ -19,9 +19,7 @@ export default function NftCard({
             src={creatorAvatar}
             alt={`creator avatar for ${creatorName}`}
           ></img>
-          <h6>
-            {creatorName} {date}
-          </h6>
+          <h6>{creatorName}</h6>
         </div>
       </div>
     </div>
