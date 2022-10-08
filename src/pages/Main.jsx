@@ -77,7 +77,6 @@ export default function All({ page }) {
       axios
         .request(options)
         .then(function (response) {
-          console.log('nft call made')
           setNftArr(response.data.nfts)
         })
         .catch(function (error) {
@@ -98,7 +97,6 @@ export default function All({ page }) {
       axios
         .request(options)
         .then(function (response) {
-          console.log('nft call made')
           setNftArr(response.data.nfts)
         })
         .catch(function (error) {

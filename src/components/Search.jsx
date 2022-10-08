@@ -21,7 +21,6 @@ export default function Search({ hidden, setNftArr, forSale, count, pageNum }) {
       axios
         .request(options)
         .then(function (response) {
-          console.log('nft call made')
           setNftArr(response.data.nfts)
         })
         .catch(function (error) {
@@ -39,8 +38,6 @@ export default function Search({ hidden, setNftArr, forSale, count, pageNum }) {
       axios
         .request(options)
         .then(function (response) {
-          console.log('nft call made')
-          console.log(response.data.nfts)
           setNftArr(response.data.nfts)
         })
         .catch(function (error) {
