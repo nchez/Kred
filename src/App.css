@@ -62,6 +62,7 @@ h5 {
   margin-top: 10px;
   height: fit-content;
   width: 90vw;
+  margin-bottom: 15px;
 }
 
 .nft-card-div {
@@ -73,7 +74,7 @@ h5 {
   border-radius: 5px;
   margin: 5px;
   width: 20vw;
-  height: 16vh;
+  height: 17vh;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
   background-color: rgba(237, 237, 237, 0.278);
   transition: 0.3s;
