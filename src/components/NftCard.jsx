@@ -1,4 +1,10 @@
-export default function NftCard({ image, name, creatorName, creatorAvatar }) {
+export default function NftCard({
+  image,
+  name,
+  creatorName,
+  creatorAvatar,
+  date,
+}) {
   return (
     <div className="nft-card-div">
       <h5>{name}</h5>
@@ -13,7 +19,9 @@ export default function NftCard({ image, name, creatorName, creatorAvatar }) {
             src={creatorAvatar}
             alt={`creator avatar for ${creatorName}`}
           ></img>
-          <h6>{creatorName}</h6>
+          <h6>
+            {creatorName} {date}
+          </h6>
         </div>
       </div>
     </div>

@@ -17,7 +17,6 @@ h5 {
   justify-content: center;
   align-items: center;
   width: fit-content;
-  border: 3px solid black;
 }
 
 .dropdown-label {
@@ -39,11 +38,14 @@ h5 {
 
 .filters-div {
   display: flex;
-  border: 3px solid green;
+  border: 3px solid rgb(77, 158, 77);
+  border-radius: 10px;
   height: 7vh;
-  width: 90vw;
+  padding: 5px;
+  width: fit-content;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  column-gap: 20px;
 }
 .forsale-toggle {
   display: flex;
@@ -143,6 +145,7 @@ h5 {
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding-bottom: 5px;
 }
 
 .letter-toggle {
@@ -156,4 +159,14 @@ h5 {
 .search-div {
   display: flex;
   margin-bottom: 10px;
+}
+
+p {
+  text-align: center;
+}
+
+.sort-div {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
 }
