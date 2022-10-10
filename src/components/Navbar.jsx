@@ -2,6 +2,7 @@ import { useCallback } from 'react'
 const axios = require('axios').default
 
 export default function Navbar({
+  page,
   setPage,
   setSortToggle,
   setPageNum,
@@ -10,8 +11,11 @@ export default function Navbar({
 }) {
   // handler for navbar clicks -- change page to selected tab and reset sort to default (ascending)
   const handleNavClick = useCallback(
-    (page) => {
-      setPage(page)
+    (targetPage) => {
+      if (page === targetPage) {
+        window.location.reload(false)
+      }
+      setPage(targetPage)
       setSortToggle('Ascending')
       setPageNum(1)
       setSearch('')
@@ -34,7 +38,7 @@ export default function Navbar({
           console.error(error)
         })
     },
-    [setPage, setSortToggle, setPageNum, setSearch, setNftArr]
+    [setPage, setSortToggle, setPageNum, setSearch, setNftArr, page]
   )
   return (
     <nav className="nav-bar">

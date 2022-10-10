@@ -31,6 +31,7 @@ function App() {
         setNftArr={setNftArr}
         search={search}
         setCount={setCount}
+        page={page}
       />
       <div className="main-div">
         <Main
