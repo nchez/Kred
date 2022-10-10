@@ -5,12 +5,12 @@ import Search from '../components/Search'
 import LetterFilter from '../components/LetterFilter'
 import Sort from '../components/Sort'
 import Loading from '../components/Loading'
+import { useEffect } from 'react'
 
 export default function AllNfts({
   setNftArr,
   pageNum,
   setPageNum,
-  count,
   setCount,
   letterFilterActive,
   setLetterFilterActive,
@@ -20,19 +20,15 @@ export default function AllNfts({
   nftArr,
   setSortToggle,
   sortToggle,
-  setSearch,
+  setPage,
 }) {
+  useEffect(() => {
+    console.log('setPage triggered AllNfts useEffect')
+  }, [setPage])
   return (
     <>
       <h1 className="title">All NFTs</h1>
-      <Search
-        forSale={forSale}
-        setNftArr={setNftArr}
-        hidden={false}
-        setPageNum={setPageNum}
-        count={count}
-        setSearch={setSearch}
-      />
+
       <div className="filters-div">
         <Dropdown setCount={setCount} />
         {!letterFilterActive ? (

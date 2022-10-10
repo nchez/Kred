@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 import NftCard from './components/NftCard'
 import AllNfts from './pages/AllNfts'
 import HiddenNfts from './pages/HiddenNfts'
+import Search from './components/Search'
 
 const axios = require('axios').default
 
 export default function Main({
+  hidden,
   page,
   sortToggle,
   setSortToggle,
@@ -16,6 +18,7 @@ export default function Main({
   count,
   setCount,
   setSearch,
+  setPage,
 }) {
   // states for forSale toggle
   const [forSale, setForSale] = useState(false)
@@ -49,6 +52,10 @@ export default function Main({
     }
   }, [count, pageNum, forSale, page, letterFilterActive, setNftArr])
 
+  useEffect(() => {
+    console.log('Main useEffect triggered by setPage.')
+  }, [setPage])
+
   // map over nftArr to create Nft cards
   const nftCards = nftArr?.map((element) => {
     return (
@@ -65,6 +72,15 @@ export default function Main({
 
   return (
     <>
+      <h1 className="title">{hidden ? 'Hidden' : 'All'} NFTs</h1>
+      <Search
+        forSale={forSale}
+        setNftArr={setNftArr}
+        hidden={hidden}
+        setPageNum={setPageNum}
+        count={count}
+        setSearch={setSearch}
+      />
       {page === 'all' ? (
         <AllNfts
           setNftArr={setNftArr}
@@ -81,9 +97,11 @@ export default function Main({
           sortToggle={sortToggle}
           setSortToggle={setSortToggle}
           setSearch={setSearch}
+          setPage={setPage}
         />
       ) : (
         <HiddenNfts
+          hidden={false}
           nftCard={nftCards}
           forSale={forSale}
           setForSale={setForSale}

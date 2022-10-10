@@ -21,6 +21,7 @@ function App() {
 
   // state for sort -- ascending or descending
   const [sortToggle, setSortToggle] = useState('Ascending')
+
   return (
     <>
       <Navbar
@@ -36,6 +37,7 @@ function App() {
       <div className="main-div">
         <Main
           page={page}
+          setPage={setPage}
           count={count}
           setCount={setCount}
           sortToggle={sortToggle}

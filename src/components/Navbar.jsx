@@ -8,16 +8,16 @@ export default function Navbar({
   setPageNum,
   setSearch,
   setNftArr,
+  setCount,
 }) {
   // handler for navbar clicks -- change page to selected tab and reset sort to default (ascending)
   const handleNavClick = useCallback(
     (targetPage) => {
-      if (page === targetPage) {
-        window.location.reload(false)
-      }
+      console.log('navbar clicked')
       setPage(targetPage)
       setSortToggle('Ascending')
       setPageNum(1)
+      setCount(20)
       setSearch('')
       setNftArr([])
       const options = {
@@ -38,7 +38,7 @@ export default function Navbar({
           console.error(error)
         })
     },
-    [setPage, setSortToggle, setPageNum, setSearch, setNftArr, page]
+    [setPage, setSortToggle, setPageNum, setSearch, setNftArr, page, setCount]
   )
   return (
     <nav className="nav-bar">

@@ -17,6 +17,7 @@ export default function HiddenNfts({
   nftArr,
   setSortToggle,
   sortToggle,
+  setSearch,
 }) {
   return (
     <>
@@ -28,6 +29,7 @@ export default function HiddenNfts({
         setPageNum={setPageNum}
         count={count}
         pageNum={pageNum}
+        setSearch={setSearch}
       />
       <div className="filters-div">
         <Dropdown setCount={setCount} />

@@ -41,7 +41,7 @@ export default function LetterFilter({ setNftArr, setLetterFilterActive }) {
           className="letter-toggle"
           onClick={() => {
             setLetterFilterToggle((state) => !state)
-            setLetterFilterActive(letterFilterToggle)
+            setLetterFilterActive((state) => !state)
           }}
         >
           {letterFilterToggle ? 'ON' : 'OFF'}
