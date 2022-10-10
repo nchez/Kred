@@ -11,18 +11,17 @@ export default function Main({
   setSortToggle,
   setPageNum,
   pageNum,
+  setNftArr,
+  nftArr,
+  count,
+  setCount,
+  setSearch,
 }) {
   // states for forSale toggle
   const [forSale, setForSale] = useState(false)
 
   // state for letterFilterToggle (is it active or not)
   const [letterFilterActive, setLetterFilterActive] = useState(false)
-
-  // state for NFT per page count
-  const [count, setCount] = useState(20)
-
-  // state for NFT Api call
-  const [nftArr, setNftArr] = useState([])
 
   // trigger api calls when count and/or page changes
   useEffect(() => {
@@ -48,7 +47,7 @@ export default function Main({
           console.error(error)
         })
     }
-  }, [count, pageNum, forSale, page, letterFilterActive])
+  }, [count, pageNum, forSale, page, letterFilterActive, setNftArr])
 
   // map over nftArr to create Nft cards
   const nftCards = nftArr?.map((element) => {
@@ -81,6 +80,7 @@ export default function Main({
           count={count}
           sortToggle={sortToggle}
           setSortToggle={setSortToggle}
+          setSearch={setSearch}
         />
       ) : (
         <HiddenNfts
@@ -96,6 +96,7 @@ export default function Main({
           nftCards={nftCards}
           sortToggle={sortToggle}
           setSortToggle={setSortToggle}
+          setSearch={setSearch}
         />
       )}
     </>

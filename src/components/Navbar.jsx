@@ -1,14 +1,40 @@
 import { useCallback } from 'react'
+const axios = require('axios').default
 
-export default function Navbar({ setPage, setSortToggle, setPageNum }) {
+export default function Navbar({
+  setPage,
+  setSortToggle,
+  setPageNum,
+  setSearch,
+  setNftArr,
+}) {
   // handler for navbar clicks -- change page to selected tab and reset sort to default (ascending)
   const handleNavClick = useCallback(
     (page) => {
       setPage(page)
       setSortToggle('Ascending')
       setPageNum(1)
+      setSearch('')
+      setNftArr([])
+      const options = {
+        method: 'GET',
+        url: `https://api.nft.kred/nft/nfts?token=${
+          process.env.REACT_APP_API_KEY
+        }&${
+          page === 'hidden' ? 'hidden=true&' : ''
+        }batched=true&count=${20}&page=${1}`,
+        headers: { accept: 'application/json' },
+      }
+      axios
+        .request(options)
+        .then(function (response) {
+          setNftArr(response.data.nfts)
+        })
+        .catch(function (error) {
+          console.error(error)
+        })
     },
-    [setPage, setSortToggle, setPageNum]
+    [setPage, setSortToggle, setPageNum, setSearch, setNftArr]
   )
   return (
     <nav className="nav-bar">

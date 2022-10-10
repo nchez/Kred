@@ -1,10 +1,15 @@
-import { useState, useCallback } from 'react'
+import { useCallback } from 'react'
 const axios = require('axios').default
 
-export default function Search({ hidden, setNftArr, forSale, count, pageNum }) {
-  // state for search input box
-  const [search, setSearch] = useState('')
-
+export default function Search({
+  hidden,
+  setNftArr,
+  forSale,
+  count,
+  setPageNum,
+  search,
+  setSearch,
+}) {
   // handler for search input
   const handleChange = useCallback(
     (e) => {
@@ -13,45 +18,27 @@ export default function Search({ hidden, setNftArr, forSale, count, pageNum }) {
     [setSearch]
   )
 
-  // handler for search submit -- cannot get working with API
+  // handler for search submit
   const handleSearch = useCallback(() => {
-    if (!hidden) {
-      const options = {
-        method: 'GET',
-        url: `https://api.nft.kred/nft/nfts?token=${
-          process.env.REACT_APP_API_KEY
-        }&${
-          forSale ? 'onsale=true&' : ''
-        }batched=true&search=${search}&count=${count}&page=${pageNum}`,
-        headers: { accept: 'application/json' },
-      }
-      axios
-        .request(options)
-        .then(function (response) {
-          setNftArr(response.data.nfts)
-        })
-        .catch(function (error) {
-          console.error(error)
-        })
+    setPageNum(1)
+    setNftArr([])
+    const options = {
+      method: 'GET',
+      url: `https://api.nft.kred/nft/nfts?token=${
+        process.env.REACT_APP_API_KEY
+      }&${hidden ? 'hidden=true&' : ''}&${forSale ? 'onsale=true&' : ''}
+        search=${search}&count=${count}&page=${1}`,
+      headers: { accept: 'application/json' },
     }
-    if (hidden) {
-      const options = {
-        method: 'GET',
-        url: `https://api.nft.kred/nft/nfts?token=${
-          process.env.REACT_APP_API_KEY
-        }&hidden=${true}search=${search}&onsale=${forSale}&batched=true&count=${count}&page=${pageNum}`,
-        headers: { accept: 'application/json' },
-      }
-      axios
-        .request(options)
-        .then(function (response) {
-          setNftArr(response.data.nfts)
-        })
-        .catch(function (error) {
-          console.error(error)
-        })
-    }
-  }, [hidden, setNftArr, count, forSale, pageNum, search])
+    axios
+      .request(options)
+      .then(function (response) {
+        setNftArr(response.data.nfts)
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
+  }, [hidden, setNftArr, count, search, forSale, setPageNum])
 
   return (
     <div className="search-div">
@@ -59,6 +46,7 @@ export default function Search({ hidden, setNftArr, forSale, count, pageNum }) {
         type="text"
         placeholder="enter search terms.."
         name="search"
+        value={search}
         onChange={handleChange}
       />
       <button type="submit" onClick={handleSearch}>
