@@ -1,13 +1,14 @@
 import { useCallback } from 'react'
 
-export default function Navbar({ setPage, setSortToggle }) {
+export default function Navbar({ setPage, setSortToggle, setPageNum }) {
   // handler for navbar clicks -- change page to selected tab and reset sort to default (ascending)
   const handleNavClick = useCallback(
     (page) => {
       setPage(page)
       setSortToggle('Ascending')
+      setPageNum(1)
     },
-    [setPage, setSortToggle]
+    [setPage, setSortToggle, setPageNum]
   )
   return (
     <nav className="nav-bar">

@@ -5,7 +5,13 @@ import HiddenNfts from './pages/HiddenNfts'
 
 const axios = require('axios').default
 
-export default function Main({ page, sortToggle, setSortToggle }) {
+export default function Main({
+  page,
+  sortToggle,
+  setSortToggle,
+  setPageNum,
+  pageNum,
+}) {
   // states for forSale toggle
   const [forSale, setForSale] = useState(false)
 
@@ -14,9 +20,6 @@ export default function Main({ page, sortToggle, setSortToggle }) {
 
   // state for NFT per page count
   const [count, setCount] = useState(20)
-
-  // state for Page num
-  const [pageNum, setPageNum] = useState(1)
 
   // state for NFT Api call
   const [nftArr, setNftArr] = useState([])
