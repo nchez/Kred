@@ -34,7 +34,7 @@ export default function HiddenNfts({
         pageNum={pageNum}
       />
       <div className="filters-div">
-        <Dropdown setCount={setCount} />
+        <Dropdown setCount={setCount} count={count} />
         <ForSaleToggle
           setForSale={setForSale}
           forSale={forSale}

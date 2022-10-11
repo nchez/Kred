@@ -36,7 +36,7 @@ export default function AllNfts({
         search={search}
       />
       <div className="filters-div">
-        <Dropdown setCount={setCount} />
+        <Dropdown setCount={setCount} count={count} />
         {!letterFilterActive ? (
           <ForSaleToggle
             setForSale={setForSale}

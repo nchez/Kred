@@ -8,7 +8,7 @@ function App() {
   const [page, setPage] = useState('all')
 
   // state for NFT per page count
-  const [count, setCount] = useState(20)
+  const [count, setCount] = useState('20')
 
   // state for NFT Api call
   const [nftArr, setNftArr] = useState([])

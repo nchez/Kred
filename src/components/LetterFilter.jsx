@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { useCallback } from 'react'
+import { useState, useCallback } from 'react'
 
 export default function LetterFilter({ setNftArr, setLetterFilterActive }) {
   // state for letterfilter toggle and string
@@ -14,20 +13,6 @@ export default function LetterFilter({ setNftArr, setLetterFilterActive }) {
     [setFirstLetterFilter]
   )
 
-  // whenever letterfiltertoggle is active/on, then filter nftArr based on what the filter is
-  // useEffect(() => {
-  //   if (letterFilterToggle) {
-  //     console.log('useEffect letterfilter toggle true')
-  //     console.log()
-  //     if (firstLetterFilter !== '') {
-  //       setNftArr((state) =>
-  //         state.filter(
-  //           (element) => element.name.charAt(0) === firstLetterFilter
-  //         )
-  //       )
-  //     }
-  //   }
-  // }, [firstLetterFilter, letterFilterToggle, setNftArr])
   return (
     <div className="letter-filter-div">
       First Letter Filter
