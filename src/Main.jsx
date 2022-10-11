@@ -25,7 +25,10 @@ export default function Main({
 
   // trigger api calls when count and/or page changes
   useEffect(() => {
-    setNftArr([])
+    // when setting NftArr to [], loading screen will show up since nftArr.length is equal to zero
+    if (!letterFilterActive) {
+      setNftArr([])
+    }
     // api call for all nft tab
     // do not trigger api call when letterfiltertoggle is on
     if (!letterFilterActive) {
@@ -46,6 +49,11 @@ export default function Main({
         .catch(function (error) {
           console.error(error)
         })
+    }
+    if (letterFilterActive) {
+      setNftArr((state) => {
+        return state.filter((element) => element.name.charAt(0) === 'T')
+      })
     }
   }, [count, pageNum, forSale, page, letterFilterActive, setNftArr])
 

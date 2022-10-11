@@ -15,17 +15,19 @@ export default function LetterFilter({ setNftArr, setLetterFilterActive }) {
   )
 
   // whenever letterfiltertoggle is active/on, then filter nftArr based on what the filter is
-  useEffect(() => {
-    if (letterFilterToggle) {
-      if (firstLetterFilter !== '') {
-        setNftArr((state) =>
-          state.filter(
-            (element) => element.name.charAt(0) === firstLetterFilter
-          )
-        )
-      }
-    }
-  }, [firstLetterFilter, letterFilterToggle, setNftArr])
+  // useEffect(() => {
+  //   if (letterFilterToggle) {
+  //     console.log('useEffect letterfilter toggle true')
+  //     console.log()
+  //     if (firstLetterFilter !== '') {
+  //       setNftArr((state) =>
+  //         state.filter(
+  //           (element) => element.name.charAt(0) === firstLetterFilter
+  //         )
+  //       )
+  //     }
+  //   }
+  // }, [firstLetterFilter, letterFilterToggle, setNftArr])
   return (
     <div className="letter-filter-div">
       First Letter Filter
