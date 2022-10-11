@@ -45,6 +45,7 @@ function App() {
           nftArr={nftArr}
           setNftArr={setNftArr}
           setSearch={setSearch}
+          search={search}
         />
       </div>
     </>

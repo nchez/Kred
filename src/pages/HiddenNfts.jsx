@@ -17,11 +17,15 @@ export default function HiddenNfts({
   nftArr,
   setSortToggle,
   sortToggle,
+  setSearch,
+  search,
 }) {
   return (
     <>
       <h1 className="title">Hidden NFTs</h1>
       <Search
+        setSearch={setSearch}
+        search={search}
         forSale={forSale}
         setNftArr={setNftArr}
         hidden={true}

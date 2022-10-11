@@ -21,6 +21,7 @@ export default function AllNfts({
   setSortToggle,
   sortToggle,
   setSearch,
+  search,
 }) {
   return (
     <>
@@ -32,6 +33,7 @@ export default function AllNfts({
         setPageNum={setPageNum}
         count={count}
         setSearch={setSearch}
+        search={search}
       />
       <div className="filters-div">
         <Dropdown setCount={setCount} />

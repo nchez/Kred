@@ -16,6 +16,7 @@ export default function Main({
   count,
   setCount,
   setSearch,
+  search,
 }) {
   // states for forSale toggle
   const [forSale, setForSale] = useState(false)
@@ -89,6 +90,7 @@ export default function Main({
           sortToggle={sortToggle}
           setSortToggle={setSortToggle}
           setSearch={setSearch}
+          search={search}
         />
       ) : (
         <HiddenNfts
@@ -105,6 +107,7 @@ export default function Main({
           sortToggle={sortToggle}
           setSortToggle={setSortToggle}
           setSearch={setSearch}
+          search={search}
         />
       )}
     </>
