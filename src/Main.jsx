@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import NftCard from './components/NftCard'
 import AllNfts from './pages/AllNfts'
 import HiddenNfts from './pages/HiddenNfts'
@@ -17,13 +17,11 @@ export default function Main({
   setCount,
   setSearch,
   search,
+  forSale,
+  setForSale,
+  letterFilterActive,
+  setLetterFilterActive,
 }) {
-  // states for forSale toggle
-  const [forSale, setForSale] = useState(false)
-
-  // state for letterFilterToggle (is it active or not)
-  const [letterFilterActive, setLetterFilterActive] = useState(false)
-
   // trigger api calls when count and/or page changes
   useEffect(() => {
     // when setting NftArr to [], loading screen will show up since nftArr.length is equal to zero

@@ -21,6 +21,13 @@ function App() {
 
   // state for sort -- ascending or descending
   const [sortToggle, setSortToggle] = useState('Ascending')
+
+  // states for forSale toggle
+  const [forSale, setForSale] = useState(false)
+
+  // state for letterFilterToggle (is it active or not)
+  const [letterFilterActive, setLetterFilterActive] = useState(false)
+
   return (
     <>
       <Navbar
@@ -32,6 +39,8 @@ function App() {
         search={search}
         setCount={setCount}
         page={page}
+        setLetterFilterActive={setLetterFilterActive}
+        setForSale={setForSale}
       />
       <div className="main-div">
         <Main
@@ -46,6 +55,10 @@ function App() {
           setNftArr={setNftArr}
           setSearch={setSearch}
           search={search}
+          letterFilterActive={letterFilterActive}
+          setLetterFilterActive={setLetterFilterActive}
+          setForSale={setForSale}
+          forSale={forSale}
         />
       </div>
     </>

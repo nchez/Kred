@@ -9,7 +9,7 @@ export default function NftCard({
     <div className="nft-card-div">
       <h5>{name}</h5>
       <div className="img-div">
-        <img className="nft-img" alt={`nft for ${name}`} src={`${image}`}></img>
+        <img className="nft-img" alt={`nft for ${name}`} src={image}></img>
       </div>
       <div className="creator-div">
         <h6>Created By:</h6>

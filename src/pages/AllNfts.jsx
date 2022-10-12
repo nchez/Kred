@@ -37,16 +37,22 @@ export default function AllNfts({
       />
       <div className="filters-div">
         <Dropdown setCount={setCount} count={count} />
-        {!letterFilterActive ? (
+        {/* {!letterFilterActive ? (
           <ForSaleToggle
             setForSale={setForSale}
             forSale={forSale}
             setSortToggle={setSortToggle}
           />
-        ) : null}
+        ) : null} */}
+        <ForSaleToggle
+          setForSale={setForSale}
+          forSale={forSale}
+          setSortToggle={setSortToggle}
+        />
         <LetterFilter
           setNftArr={setNftArr}
           setLetterFilterActive={setLetterFilterActive}
+          letterFilterActive={letterFilterActive}
         />
         <Sort
           setNftArr={setNftArr}

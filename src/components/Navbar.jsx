@@ -9,6 +9,8 @@ export default function Navbar({
   setSearch,
   setCount,
   setNftArr,
+  setLetterFilterActive,
+  setForSale,
 }) {
   // handler for navbar clicks -- change page to selected tab and reset sort to default (ascending)
   const handleNavClick = useCallback(
@@ -19,6 +21,8 @@ export default function Navbar({
       setCount(20)
       setSearch('')
       setNftArr([])
+      setForSale(false)
+      setLetterFilterActive(false)
       const options = {
         method: 'GET',
         url: `https://api.nft.kred/nft/nfts?token=${
@@ -37,7 +41,17 @@ export default function Navbar({
           console.error(error)
         })
     },
-    [setPage, setSortToggle, setPageNum, setSearch, setNftArr, page, setCount]
+    [
+      setPage,
+      setSortToggle,
+      setPageNum,
+      setSearch,
+      setNftArr,
+      page,
+      setCount,
+      setLetterFilterActive,
+      setForSale,
+    ]
   )
   return (
     <nav className="nav-bar">
